@@ -3,13 +3,10 @@
 }
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+  max-width: 2rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
- 
-}
+
 
 .App-header {
   background-color: #282c34;
