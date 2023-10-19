@@ -25,8 +25,8 @@ export default class Izbornik extends Component{
               <NavDropdown.Item href="/vozila">
                 Vozila
               </NavDropdown.Item>
-              <NavDropdown.Item href="oglasi">Oglasi</NavDropdown.Item>
-              <NavDropdown.Item href="upiti">Upiti</NavDropdown.Item>
+              <NavDropdown.Item href="/oglasi">Oglasi</NavDropdown.Item>
+              <NavDropdown.Item href="/upiti">Upiti</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item target="_blank" href="/swagger/index.html">
                 Swagger 

@@ -10,6 +10,7 @@ export default class NadzornaPloca extends Component{
 
             <Container>
                 <p>Ovdje će doći lijepi graf</p>
+                
             </Container>
             
 
