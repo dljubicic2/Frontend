@@ -1,13 +1,16 @@
 import React,  { Component } from "react";
-import { Container, Table } from "react-bootstrap";
+import { Button, Container, Table } from "react-bootstrap";
 import OsobaDataService from "../../services/osoba.service";
+import { Link } from "react-router-dom";
+import {FaEdit, FaTrash} from "react-icons/fa";
 
 
 export default class Osobe extends Component{
 
     constructor(props){
         super(props);
-        this.dohvatiOsobe=this.dohvatiOsobe.bind(this);
+        
+
         this.state={
             osobe: []
         };
@@ -30,6 +33,15 @@ export default class Osobe extends Component{
         .catch(e => {
             console.log(e);
         });
+    }
+
+    async obrisiOsobu(sifra){
+        const odgovor = await OsobaDataService.delete(sifra)
+        if(odgovor.ok){
+            this.dohvatiOsobe();
+        }else{
+            alert(odgovor.poruka);
+        }
     }
 
     
@@ -60,7 +72,18 @@ export default class Osobe extends Component{
                             <td>{osoba.nadimak}</td>
                             <td>{osoba.email}</td>
                             <td>{osoba.lozinka}</td>
-                            <td></td>
+                            <td>
+                                <Link className="btn btn-primary gumb"
+                                to={`/osobe/${osoba.sifra}`}>
+                                    <FaEdit />
+                                </Link>
+
+                                <Button variant="danger" className="gumb"
+                                onClick={()=>this.obrisiOsobu(osoba.sifra)}>
+                                    <FaTrash />
+                                </Button>
+
+                            </td>
 
                         </tr>
 

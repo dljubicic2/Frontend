@@ -15,7 +15,7 @@ export default class Izbornik extends Component{
 
             <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand href="/"> <img className="App-logo" src={logo} alt="" /> Edunova App</Navbar.Brand>
+        <Navbar.Brand href="/"> <img className="App-logo" src={logo} alt="" /> Auto Oglasnik</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
