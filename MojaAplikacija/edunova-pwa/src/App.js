@@ -5,6 +5,7 @@ import Izbornik from './components/izbornik.component';
 import Pocetna from './components/pocetna.component';
 import NadzornaPloca from './components/nadzornaploca.component';
 import Osobe from './components/osoba/osobe.component';
+import DodajOsobu from './components/osoba/dodajOsobu.component';
 
 export default function App() {
   return (
@@ -14,8 +15,11 @@ export default function App() {
         <Route path='/' element={<Pocetna/>} />
         <Route path='/nadzornaploca' element={<NadzornaPloca />} />
         <Route path='/osobe' element={<Osobe />} />
-      </Routes>
-    </Router>
+        <Route path='/osobe/dodaj' element={<DodajOsobu/>} />
+        </Routes>
+        </Router>
+
+        
   );
 }
 

@@ -8,12 +8,12 @@ class OsobaDataService{
         return await http.get('/Osoba');
     }
 
-    async delete(){
+    async delete(sifra){
         const odgovor=await http.delete('/Osoba/'+ sifra)
-        .then(respnse =>{
-            return{ok: true, poruka: "Obrisao uspješno"};
+        .then(response => {
+            return{ok: true, poruka: 'Obrisao uspješno'};
         })
-        .catch(e=>{
+        .catch(e=> {
             return{ok: false, poruka: e.respnse.data};
         });
 
@@ -22,9 +22,11 @@ class OsobaDataService{
 
     async post (osoba){
         const odgovor = await http.post('/osoba',osoba)
-        .then(response =>{
-        console.log(console.error.response);
-        return {ok: false, poruka: error.response.data};
+        .then(response => {
+        return {ok: true, poruka: 'Unio osobu'};
+        })
+        .catch(error => {
+            return {ok: false, poruka: error.respnse.data};
         });
 
         return odgovor;
