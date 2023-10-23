@@ -1,34 +1,46 @@
 import React,  { Component } from "react";
-import { Button, Container} from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
 import OsobaDataService from "../../services/osoba.service";
 import { Link } from "react-router-dom";
 import { Form } from "react-bootstrap/lib/Navbar";
 import { Col, Row } from "react-bootstrap/esm";
 
 
-export default class DodajOsobu extends Component{
+export default class PromjeniOsobu extends Component{
 
     constructor(props){
         super(props);
 
-        this.DodajOsobu = this.DodajOsobu.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+       this.osoba = this.dohvatiOsobu();
+       this.promjeniOsobu = this.promjeniOsobu.bind(this);
+       this.handleSubmit = this.handleSubmit.bind(this);
         
     }
     
 
-    async DodajOsobu(osoba){
-        const odgovor = await OsobaDataService.post(osoba);
+    async dohvatiOsobu(osoba){
+        let href = window.location.href;
+        let niz = href.split('/');
+        await OsobaDataService.getBySifra(niz[niz.length-1])
+        .then(response => {
+            this.setState({
+                osoba: response.data
+            });
+        })
+
+        .catch(e=>{
+            console.log(e);
+        });
+    }
+
+    async promjeniOsobu(osoba){
+        let href = window.location.href;
+        let niz = href.split('/');
+        const odgovor = await OsobaDataService.put(niz[niz.length-1],osoba);
         if(odgovor.ok){
             window.location.href='/osobe';
         }else{
-            let poruka='';
-            for(const key in odgovor.poruka.errors){
-                if(odgovor.poruka.errors.hasOwnProperty(key)) {
-                    poruke += `${odgovor.poruka.errors[key]}` + '\n';
-                }
-            }
-            alert(poruka);
+            console.log(odgovor);
         }
     }
 

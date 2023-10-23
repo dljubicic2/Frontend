@@ -42,6 +42,7 @@ export default class Osobe extends Component{
         }else{
             alert(odgovor.poruka);
         }
+
     }
 
     

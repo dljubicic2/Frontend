@@ -8,10 +8,6 @@ class OsobaDataService{
         return await http.get('/Osoba');
     }
 
-    async getBySifra(sifra){
-        return await http.get('/osoba/' + sifra);
-    }
-
     async delete(sifra){
         const odgovor=await http.delete('/Osoba/'+ sifra)
         .then(response => {
