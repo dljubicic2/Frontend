@@ -2,7 +2,7 @@ import React,  { Component } from "react";
 import { Button, Container } from "react-bootstrap";
 import OsobaDataService from "../../services/osoba.service";
 import { Link } from "react-router-dom";
-import { Form } from "react-bootstrap/lib/Navbar";
+import Form from 'react-bootstrap/Form';
 import { Col, Row } from "react-bootstrap/esm";
 
 
@@ -82,12 +82,15 @@ export default class PromjeniOsobu extends Component{
                     <Form.Control type="text" name="lozinka" placeholder="Lozinka osobe" maxlenght={255} required />
                 </Form.Group>
 
+                
+
                 <Row>
                     <Col>
                         <Link className="btn btn-danger gumb" to={`/osobe`}>Odustani</Link> 
                     </Col>
                     <Col>
                         <Button variant="primary" className="gumb" type="submit">
+                            Promjeni osobu
 
                         </Button>
                     </Col>

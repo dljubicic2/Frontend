@@ -2,7 +2,7 @@ import React,  { Component } from "react";
 import { Button, Container} from "react-bootstrap";
 import OsobaDataService from "../../services/osoba.service";
 import { Link } from "react-router-dom";
-import { Form } from "react-bootstrap/lib/Navbar";
+import { Form } from "react-bootstrap/esm";
 import { Col, Row } from "react-bootstrap/esm";
 
 
@@ -25,7 +25,7 @@ export default class DodajOsobu extends Component{
             let poruka='';
             for(const key in odgovor.poruka.errors){
                 if(odgovor.poruka.errors.hasOwnProperty(key)) {
-                    poruke += `${odgovor.poruka.errors[key]}` + '\n';
+                    poruka += `${odgovor.poruka.errors[key]}` + '\n';
                 }
             }
             alert(poruka);
@@ -48,7 +48,7 @@ export default class DodajOsobu extends Component{
 
     render(){
 
-        const  { osobe } = this.state;
+        
 
         return (
 
@@ -76,6 +76,7 @@ export default class DodajOsobu extends Component{
                     </Col>
                     <Col>
                         <Button variant="primary" className="gumb" type="submit">
+                            Dodaj osobu
 
                         </Button>
                     </Col>

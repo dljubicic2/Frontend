@@ -58,6 +58,8 @@ export default class Osobe extends Component{
                     Dodaj novu osobu
                 </a>
 
+                
+
             <Table striped bordered hover responsive>
                 <thead>
                     <tr>
@@ -93,7 +95,7 @@ export default class Osobe extends Component{
                 </tbody>
             </Table>
             
-
+                        
             
 
             </Container>

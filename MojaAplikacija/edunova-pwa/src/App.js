@@ -6,6 +6,13 @@ import Pocetna from './components/pocetna.component';
 import NadzornaPloca from './components/nadzornaploca.component';
 import Osobe from './components/osoba/osobe.component';
 import DodajOsobu from './components/osoba/dodajOsobu.component';
+import Vozila from './components/vozilo/vozila.component';
+import DodajVozilo from './components/vozilo/dodajVozilo.component';
+import PromjeniOsobu from './components/osoba/promjeniOsobu.component';
+import Oglasi from './components/oglas/oglasi.component';
+import DodajOglas from './components/oglas/dodajOglas.component';
+import PromjeniOglas from './components/oglas/promjeniOglas.component';
+import PromjeniVozilo from './components/vozilo/promjeniVozilo.component';
 
 export default function App() {
   return (
@@ -16,8 +23,19 @@ export default function App() {
         <Route path='/nadzornaploca' element={<NadzornaPloca />} />
         <Route path='/osobe' element={<Osobe />} />
         <Route path='/osobe/dodaj' element={<DodajOsobu/>} />
+        <Route path='/osobe/promjeni' element={<PromjeniOsobu/>} />
+        <Route path='/osobe/:sifra' element={<PromjeniOsobu/>} />
+        <Route path="/vozila" element={<Vozila/>} />
+        <Route path='/vozila/dodaj' element={<DodajVozilo/>} />
+        <Route path='/vozila/promjeni' element={<PromjeniVozilo/>} />
+        <Route path='/oglasi' element={<Oglasi />} />
+        <Route path='/oglasi/dodaj' element={<DodajOglas/>} />
+        <Route path='/oglasi/promjeni' element={<PromjeniOglas/>} />
+        
+
         </Routes>
         </Router>
+      
 
         
   );
