@@ -13,6 +13,9 @@ import Oglasi from './components/oglas/oglasi.component';
 import DodajOglas from './components/oglas/dodajOglas.component';
 import PromjeniOglas from './components/oglas/promjeniOglas.component';
 import PromjeniVozilo from './components/vozilo/promjeniVozilo.component';
+import Upiti from './components/upit/upiti.component';
+import DodajUpit from './components/upit/dodajUpit.component';
+import PromjeniUpit from './components/upit/promjeniUpit.component';
 
 export default function App() {
   return (
@@ -31,7 +34,10 @@ export default function App() {
         <Route path='/oglasi' element={<Oglasi />} />
         <Route path='/oglasi/dodaj' element={<DodajOglas/>} />
         <Route path='/oglasi/promjeni' element={<PromjeniOglas/>} />
-        
+        <Route path='/upiti' element={<Upiti />} />
+        <Route path='/upiti/dodaj' element={<DodajUpit/>} />
+        <Route path='/upiti/promjeni' element={<PromjeniUpit/>} />
+         
 
         </Routes>
         </Router>

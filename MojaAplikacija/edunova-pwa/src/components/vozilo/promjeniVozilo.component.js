@@ -91,7 +91,59 @@ export default class PromjeniVozilo extends Component{
 
             <Container>
                
+               <Form onSubmit={this.handleSubmit}>
+                <Row>
+                    <Col key="1" sm={12} lg={6} md={6}>
+                        <Form.Group className="mb-3" controlid="marka">
+                            <Form.Label>Marka</Form.Label>
+                            <Form.Control type="text" name="marka" placeholder="" maxLenght={255} defaultValue={vozilo.marka} required/>
+                        </Form.Group>
 
+                        <Form.Group className="mb-3" controlid="model">
+                            <Form.Label>Model</Form.Label>
+                            <Form.Control type="text" name="model" placeholder="" maxLenght={255} defaultValue={vozilo.model} required/>
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlid="pogon">
+                            <Form.Label>Pogon</Form.Label>
+                            <Form.Control type="text" name="pogon" placeholder="" maxLenght={255} defaultValue={vozilo.pogon} required/>
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlid="godiste">
+                            <Form.Label>Godiste</Form.Label>
+                            <Form.Control type="date" name="godiste" placeholder="" maxLenght={255} defaultValue={vozilo.godiste} required/>
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlid="kilometraza">
+                            <Form.Label>Kilometraza</Form.Label>
+                            <Form.Control type="number" name="kilometraza" placeholder="" maxLenght={255} defaultValue={vozilo.kilomatraza} required/>
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlid="osoba">
+                            <Form.Label>Osoba</Form.Label>
+                            <Form.Select defaultValue={vozilo.sifraOsoba} onChange={e=>{
+                                this.setState({sifraOsoba: e.target.value});
+                            }}>
+                                {osobe && osobe.map((osoba,index) => (
+                      <option key={index} value={osoba.sifra}>{osoba.nadimak}</option>
+                                ))}
+                            </Form.Select>
+                        </Form.Group>
+                        <Row>
+                            <Col>
+                            <Link className="btn btn -danger gumb" to={`/vozila`}>Odustani</Link>
+                            </Col>
+                            <Col>
+                                <Button variant="primary" className="gumb" type="submit">
+                                    Promjeni vozilo
+                                </Button>
+                            </Col>
+                        </Row>
+                        </Col>
+                        </Row>
+
+                        </Form>
+                
 
             </Container>
             

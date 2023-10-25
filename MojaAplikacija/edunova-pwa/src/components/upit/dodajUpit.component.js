@@ -16,43 +16,63 @@ export default class DodajUpit extends Component{
         super(props);
 
       
-
-        this.dodajOglas = this.dodajOglas.bind(this);
+        this.dodajUpit =this.dodajUpit.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.dohvatiOsobe = this.dohvatiOsobe.bind(this);
+        this.dohvatiOglase = this.dohvatiOglase.bind(this);
+     
 
 
         this.state ={
             osobe: [],
-            sifraOsoba:0
+            sifraOsoba:0,
+            oglas: [],
+            sifraOglas:0
         };
     }
  
 
 componentDidMount() {
     this.dohvatiOsobe();
+    this.dohvatiOglase();
 }
 
     
 
-    async dodajOglas(oglas){
-        const odgovor = await OglasDataService.post(oglas);
+    async dodajUpit(upit){
+        const odgovor = await UpitDataService.post(upit);
         if(odgovor.ok){
-            window.location.href='/oglasi';
+            window.location.href='/upiti';
         }else{
             console.log(odgovor);
         }
     }
 
-    async dohvatiOglase(){
+    async dohvatiOsobe(){
         await OsobaDataService.get()
-        .then(response =>{
+        .then(response=>{
             this.setState({
                 osobe: response.data,
                 sifraOsoba: response.data[0].sifra
+
             });
         })
-        .catch(e=> {
+        .catch(e=>{
+            console.log(e);
+        });
+        
+    }
+
+    async dohvatiOglase(){
+        await OglasDataService.get()
+        .then(response=>{
+            this.setState({
+                oglasi: response.data,
+                sifraOglas: response.data[0].sifra
+
+            });
+        })
+        .catch(e=>{
             console.log(e);
         });
         
@@ -68,12 +88,12 @@ componentDidMount() {
         console.log('lozinka');
         let godiste = moment.utc(podaci.get('datumPocetka')+' '+podaci.get('godiste'));
         console.log(godiste);
+        console.log(pitanje);
 
         this.dodajOglas({
-            marka: podaci.get('naslov'),
-            model: podaci.get('opis'),
-            pogon: podaci.get('cijena'),
-           sifraOsoba: this.state.sifraOsoba
+            pitanje: podaci.get('pitanje'),
+           sifraOsoba: this.state.sifraOsoba,
+           sifraOglas: this.state.sifraOglas
         });
     }
 
@@ -82,52 +102,63 @@ componentDidMount() {
     render(){
 
         const  { osobe } = this.state;
+        const {oglasi} = this.state;
 
         return (
 
             <Container>
                <Form onSubmit={this.handleSubmit}>
                 
-                <Form.Group className="mb-3" controlId="naslov">
-                    <Form.Label>Naslov</Form.Label>
-                    <Form.Control type="text" name="naslov" placeholder="Naslov oglasa" maxlenght={255} required />
+                <Form.Group className="mb-3" controlId="pitanje">
+                    <Form.Label>Pitanje</Form.Label>
+                    <Form.Control type="text" name="pitanje" placeholder="Upit" maxlenght={255} required />
                 </Form.Group>
 
-                <Form.Group className="mb-3" controlId="opis">
-                    <Form.Label>Opis</Form.Label>
-                    <Form.Control type="text" name="opis" placeholder="Opis oglasa" maxlenght={255} required />
-                </Form.Group>
-
-                <Form.Group className="mb-3" controlId="cijena">
-                    <Form.Label>Cijena</Form.Label>
-                    <Form.Control type="decimal" name="cijena" placeholder="Cijena vozila" maxlenght={255} required />
-                </Form.Group>
 
                 <Form.Group className="mb-3" controlId="osoba">
                     <Form.Label>Osoba</Form.Label>
                     <Form.Select onChange={e => {
                         this.setState({sifraOsoba: e.target.value});
                     }}>
-                
-              
+
+                     {osobe && osobe.map((osoba,index) => (
+                        <option key={index} value={osoba.sifra}>{osoba.nadimak}</option>
+                     ))}
+
+                <Form.Group className="mb-3" controlId="oglasi">
+                    <Form.Label>Oglas</Form.Label>
+                    <Form.Select onChange={e =>{
+                        this.setState({sifraOglas: e.target.value});
+                    }}>
+
+                    {oglasi && oglasi.map((oglasi,index)=> (
+                        <option key={index} value={oglas.sifra}>{oglas.pitanje}</option>
+
+                        ))}
+
+                    </Form.Select>
+                </Form.Group>
+
+                 
 
                     </Form.Select>
                 </Form.Group>
 
                 <Row>
                     <Col>
-                        <Link className="btn btn-danger gumb" to={`/oglasi`}>Odustani</Link> 
+                        <Link className="btn btn-danger gumb" to={`/upiti`}>Odustani</Link> 
                     </Col>
                     <Col>
                         <Button variant="primary" className="gumb" type="submit">
-                            Dodaj oglas
-
+                            Dodaj upit
                         </Button>
                     </Col>
                 </Row>
                 </Form>
                 
-
+              
+              
+                
             
 
             </Container>

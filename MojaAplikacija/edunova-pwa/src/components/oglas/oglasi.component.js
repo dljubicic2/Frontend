@@ -87,7 +87,7 @@ export default class Oglasi extends Component{
                         </Col>
                         <Col>
                             {g.brojOsoba===0 &&
-                                <Button variant="danger" className="gumb" onClick={()=> this.obrisiOglas(g.sifra)}><FarTrash /></Button>
+                                <Button variant="danger" className="gumb" onClick={()=> this.obrisiOglas(g.sifra)}><FaTrash /></Button>
                             }
                         </Col>
                         <Col>

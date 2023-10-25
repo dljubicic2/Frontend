@@ -1,6 +1,6 @@
 import React,  { Component } from "react";
 import { Button, Container, Table } from "react-bootstrap";
-import OglasDataService from "../../services/osoba.service";
+import UpitDataService from "../../services/upit.service";
 import { Link } from "react-router-dom";
 import {FaEdit, FaMailBulk, FaTrash} from "react-icons/fa";
 import { Col, Row } from "react-bootstrap/esm";
@@ -63,6 +63,11 @@ export default class Upiti extends Component{
         return (
 
             <Container>
+
+                <a href="/upiti/dodaj" className="btn btn-success gumb">
+                    Dodaj novi upit
+                </a>
+
               <a href="/upiti/dodaj" className="btn btn-success gumb">Dodaj novi upit</a>
               <Table striped bordered hover responsive>
                 <thead>
