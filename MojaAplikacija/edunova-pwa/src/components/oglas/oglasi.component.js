@@ -1,10 +1,11 @@
 import React,  { Component } from "react";
 import { Button, Container, Table } from "react-bootstrap";
-import OglasDataService from "../../services/osoba.service";
+import OglasDataService from "../../services/oglas.service";
 import { Link } from "react-router-dom";
 import {FaEdit, FaMailBulk, FaTrash} from "react-icons/fa";
 import { Col, Row } from "react-bootstrap/esm";
-import { Modal } from "bootstrap";
+import { Modal } from "react-bootstrap";
+
 
 
 export default class Oglasi extends Component{
@@ -29,13 +30,15 @@ export default class Oglasi extends Component{
     componentDidMount(){
         this.dohvatiOglase();
 
+        
+
     }
 
     dohvatiOglase(){
         OglasDataService.getAll()
         .then(response =>{
             this.setState({
-                upiti: response.data
+                oglasi: response.data
             });
         })
         .catch(e =>{

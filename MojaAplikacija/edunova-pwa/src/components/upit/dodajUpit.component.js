@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import OglasDataService from "../../services/osoba.service";
 import OsobaDataService from "../../services/osoba.service";
+import UpitDataService from "../../services/upit.service";
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -88,7 +89,7 @@ componentDidMount() {
         console.log('lozinka');
         let godiste = moment.utc(podaci.get('datumPocetka')+' '+podaci.get('godiste'));
         console.log(godiste);
-        console.log(pitanje);
+        console.log('pitanje');
 
         this.dodajOglas({
             pitanje: podaci.get('pitanje'),
@@ -131,7 +132,7 @@ componentDidMount() {
                         this.setState({sifraOglas: e.target.value});
                     }}>
 
-                    {oglasi && oglasi.map((oglasi,index)=> (
+                    {oglasi && oglasi.map((oglas,index)=> (
                         <option key={index} value={oglas.sifra}>{oglas.pitanje}</option>
 
                         ))}

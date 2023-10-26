@@ -1,10 +1,10 @@
 import React,  { Component } from "react";
 import { Button, Container, Table } from "react-bootstrap";
 import UpitDataService from "../../services/upit.service";
-import { Link } from "react-router-dom";
+import { Await, Link } from "react-router-dom";
 import {FaEdit, FaMailBulk, FaTrash} from "react-icons/fa";
 import { Col, Row } from "react-bootstrap/esm";
-import { Modal } from "bootstrap";
+import { Modal } from "react-bootstrap";
 
 
 export default class Upiti extends Component{
@@ -16,7 +16,7 @@ export default class Upiti extends Component{
 
 
         this.state={
-            grupe: [],
+            upiti: [],
             prikaziModal: false
 
             
@@ -33,10 +33,10 @@ export default class Upiti extends Component{
     }
 
     dohvatiUpite(){
-        UpitDataService.getAll()
+         UpitDataService.getAll()
         .then(response =>{
             this.setState({
-                Upiti: response.data
+                upiti: response.data
             });
         })
         .catch(e =>{
@@ -93,7 +93,7 @@ export default class Upiti extends Component{
                         </Col>
                         <Col>
                             {g.brojOsoba===0 &&
-                                <Button variant="danger" className="gumb" onClick={()=> this.obrisiUpit(g.sifra)}><FarTrash /></Button>
+                                <Button variant="danger" className="gumb" onClick={()=> this.obrisiUpit(g.sifra)}><FaTrash /></Button>
                             }
                         </Col>
                         <Col>

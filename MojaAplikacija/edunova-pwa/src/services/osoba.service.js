@@ -30,7 +30,7 @@ class OsobaDataService{
         return {ok: true, poruka: 'Unio osobu'};
         })
         .catch(error => {
-            return {ok: false, poruka: error.respnse.data};
+            return {ok: false, poruka: error.response.data};
         });
 
         return odgovor;

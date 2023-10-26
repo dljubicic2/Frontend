@@ -2,10 +2,13 @@ import React,  { Component } from "react";
 import { Button, Container, Table } from "react-bootstrap";
 import OglasDataService from "../../services/osoba.service";
 import OsobaDataService from "../../services/osoba.service";
+import UpitDataService from "../../services/upit.service";
 import { Link } from "react-router-dom";
 import Form from 'react-bootstrap/Form';
 import { Col, Row } from "react-bootstrap/esm";
 import moment from "moment";
+import { AsyncTypeahead } from "react-bootstrap-typeahead";
+import { FaTrash } from "react-icons/fa";
 
 
 export default class PromjeniUpit extends Component{
@@ -100,7 +103,7 @@ export default class PromjeniUpit extends Component{
            });
        }
 
-    async traziOglas(){
+    async traziOglas(uvjet){
         await OglasDataService.traziOglas(uvjet)
         .then(response=>{
             this.setState({
@@ -112,17 +115,7 @@ export default class PromjeniUpit extends Component{
         });
     }
 
-    async traziOglas(uvjet){
-        await OglasDataService.traziOglas(uvjet)
-        .then(response=>{
-            this.setState({
-                pronadeniOglasi: response.data
-            });
-        })
-        .catch(e => {
-            console.log(e);
-        });
-    }
+
 
     async obrisiOglas(upit,oglas){
         const odgovor = await UpitDataService.obrisiOglas(upit,oglas);
@@ -179,7 +172,7 @@ export default class PromjeniUpit extends Component{
             this.traziOglas(uvjet);
         };
 
-        const odabranaOglas = (oglas) =>{
+        const odabraniOglas = (oglas) =>{
             if(oglas.length>0){
                 this.dodajOsobu(upit.sifra,oglas[0].sifra);
             }
@@ -194,12 +187,12 @@ export default class PromjeniUpit extends Component{
 
                         <Form.Group className="mb-3" controlid="pitanje">
                             <Form.Label>Pitanje</Form.Label>
-                            <Form.Control type="text" name="pitanje" placeholder="" maxLenght={255} defaultValue={oglas.naslov} required/>
+                            <Form.Control type="text" name="pitanje" placeholder="" maxLenght={255} defaultValue={upit.naslov} required/>
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlid="osoba">
                             <Form.Label>Osoba</Form.Label>
-                            <Form.Select defaultValue={oglas.sifraOsoba} onChange={e=>{
+                            <Form.Select defaultValue={upit.sifraOsoba} onChange={e=>{
                                 this.setState({sifraOsoba: e.target.value});
                             }}>
                                 {osobe && osobe.map((osoba,index) => (

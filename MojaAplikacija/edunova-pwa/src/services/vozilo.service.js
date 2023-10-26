@@ -64,4 +64,4 @@ class VoziloDataService{
     
 }
 
-export default new OsobaDataService();
+export default new VoziloDataService();

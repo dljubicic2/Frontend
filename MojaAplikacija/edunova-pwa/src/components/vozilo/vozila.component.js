@@ -4,7 +4,7 @@ import VoziloDataService from "../../services/osoba.service";
 import { Link } from "react-router-dom";
 import {FaEdit, FaMailBulk, FaTrash} from "react-icons/fa";
 import { Col, Row } from "react-bootstrap/esm";
-import { Modal } from "bootstrap";
+import { Modal } from "react-bootstrap";
 
 
 
@@ -30,7 +30,7 @@ export default class Vozila extends Component{
 
     }
 
-    async dohvatiVozila(){
+     dohvatiVozila(){
         VoziloDataService.getAll()
         .then(response =>{
             this.setState({

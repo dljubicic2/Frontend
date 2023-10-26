@@ -6,7 +6,7 @@ class OglasDataService{
         return await http.get('/Oglas');
     }
 
-    async getBySifra(){
+    async getBySifra(sifra){
         return await http.get('/oglas/'+ sifra);
     }
 
@@ -30,7 +30,7 @@ class OglasDataService{
     async dodajOsobu(oglas,osoba){
         const odgovor = await http.post('/oglas/' + oglas + '/dodaj/' + osoba)
         .then(response =>{
-            return {ok: false, poruka: error.respnse.data};
+            return {ok: false, poruka: 'Unio osobu'};
         })
         .catch(error =>{
             console.log(error);
@@ -90,4 +90,4 @@ class OglasDataService{
     
 }
 
-export default new OsobaDataService();
+export default new OglasDataService();

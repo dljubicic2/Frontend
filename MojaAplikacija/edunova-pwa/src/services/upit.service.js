@@ -48,7 +48,7 @@ class UpitDataService{
     async dodajOsobu(upit,osoba){
         const odgovor = await http.post('/upit/' + upit + '/dodaj/' + osoba)
         .then(response =>{
-            return {ok: false, poruka: error.respnse.data};
+            return {ok: true, poruka: 'Uspješno unjeo'};
         })
         .catch(error =>{
             console.log(error);
@@ -61,7 +61,7 @@ class UpitDataService{
     async dodajOglas(upit,oglas){
         const odgovor = await http.post('/upit/' + upit + '/dodaj/' + oglas)
         .then(response =>{
-            return {ok: false, poruka: error.respnse.data};
+            return {ok: true, poruka: 'Uspješno unjeo'};
         })
         .catch(error =>{
             console.log(error);
@@ -98,4 +98,4 @@ class UpitDataService{
     
 }
 
-export default new OsobaDataService();
+export default new UpitDataService();

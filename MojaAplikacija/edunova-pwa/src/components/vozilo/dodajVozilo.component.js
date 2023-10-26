@@ -118,7 +118,7 @@ componentDidMount() {
 
                 <Form.Group className="mb-3" controlId="kilometraza">
                     <Form.Label>Kilometraza</Form.Label>
-                    <Form.Control type="number" name="kilometraza" placeholder="Kilometraza vozila" maxlenght={255} required />
+                    <Form.Control type="int" name="kilometraza" placeholder="Kilometraza vozila" maxlenght={255} required />
                 </Form.Group>
 
                     </Form.Select>
